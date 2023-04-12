@@ -1,16 +1,10 @@
+import pokemons from '../pokemons.json';
+import { PokemonList } from "./PokemonsList";
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <PokemonList pokemons={pokemons}/>
     </div>
   );
 };

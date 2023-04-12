@@ -1,0 +1,14 @@
+[
+    {
+        "id": 0,
+        "pokemonsName": "Bulbosaur",
+        "pokemonSrc": "../images/Bulbosaur.png",
+        "CatchingManagement": "Поймать"
+    },
+    {
+        "id": 1,
+        "pokemonsName": "pikachu",
+        "pokemonSrc": "./images/Picachu.png",
+        "CatchingManagement": "отпустить"
+    }
+]

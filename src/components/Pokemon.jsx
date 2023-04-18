@@ -1,11 +1,23 @@
+import { useState } from 'react';
+// https://react.dev/reference/react/useState#usestate
 
+export const Pokemon = ({ name, id}) => {
 
-export const Pokemon = ({ pokemon: { pokemonsName, bulbosaurSrc, CatchingManagement } }) => {
+    const [caught, setCaught] = useState(false);
+
+    function handleClick() { 
+        setCaught(!caught)
+    }
+    
+    const url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + id +'.png'
+    const style = {
+        backgroundColor: caught ? "red" : "green"
+    };
     return (
-        <div>
-            <h2>{pokemonsName}</h2>
-            <img src="./images/Picachu.png" />
-            <button>CatchingManagement</button>
+        <div style={style}>
+            <h2>{name}</h2>
+            <img src={url} /> 
+            <button onClick = {handleClick} > {caught ? 'отпустить' : 'поймать'}</button>
         </div>
     );
 }

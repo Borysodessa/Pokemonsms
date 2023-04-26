@@ -1,5 +1,7 @@
 import { Pokemon } from "./Pokemon";
-
+import './styles.css'
+import { useState } from 'react';
+ 
 // https://react.dev/learn/passing-props-to-a-component#passing-props-to-a-component
 // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png
 const pokemons = [
@@ -86,16 +88,41 @@ const pokemons = [
 ];
 
 // https://react.dev/learn/rendering-lists
+const obj = {};
+for (let i = 0; i < pokemons.length; i += 1) {
+   obj[pokemons[i].id] = false; 
+  }
+obj[3] = true
+obj[6] = true
+console.log(obj);
+
 
 export const App = () => {
-  const allPokemons = pokemons.map(pokemon =>
-    <Pokemon name={pokemon.name}
-    id={pokemon.id} />)
-  return (
-    
-    <ul>
-      {allPokemons}
-    </ul>
+  const [caught, setCaught] = useState(obj);
 
+  // function counterCoughtPlus() {
+  //   setCount(count + 1);
+  // }
+  // function counterCoughtMinus() {
+  //   setCount(count - 1);
+  // } 
+  // export function handleClick() { 
+  //   console.log(4645434684351)
+  //   } 
+  
+ return (
+    <section className="section">
+      {/* <p class="count">{ count }</p> */}
+
+      {pokemons.map(pokemon => (
+
+        <Pokemon
+          caught={caught[pokemon.id]}
+          key={pokemon.id}
+          name={pokemon.name}
+          id={pokemon.id}
+        />
+      ))}
+    </section>
   );
 };

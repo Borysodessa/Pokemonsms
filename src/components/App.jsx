@@ -91,7 +91,7 @@ const pokemons = [
 const obj = {};
 for (let i = 0; i < pokemons.length; i += 1) {
    obj[pokemons[i].id] = false; 
-  }
+}
 obj[3] = true
 obj[6] = true
 console.log(obj);
@@ -100,23 +100,27 @@ console.log(obj);
 export const App = () => {
   const [caught, setCaught] = useState(obj);
 
-  // function counterCoughtPlus() {
-  //   setCount(count + 1);
-  // }
-  // function counterCoughtMinus() {
-  //   setCount(count - 1);
-  // } 
-  // export function handleClick() { 
-  //   console.log(4645434684351)
-  //   } 
-  
+  function handleClick(id) {
+
+    const newCaught = { ...caught };
+
+    console.log()
+    newCaught[id] = !newCaught[id]
+    setCaught(newCaught);
+  }  
+
+
+  const counter = Object.values(caught).filter(el => el === true).length
+    
+  console.log('counter', counter)
  return (
     <section className="section">
-      {/* <p class="count">{ count }</p> */}
+      <h1 class="count">{ counter }/20</h1>
 
       {pokemons.map(pokemon => (
 
         <Pokemon
+          handleClick={() => handleClick(pokemon.id)} 
           caught={caught[pokemon.id]}
           key={pokemon.id}
           name={pokemon.name}
